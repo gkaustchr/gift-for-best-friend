@@ -19,7 +19,25 @@
             height: 100vh;
             text-align: center;
             overflow-x: hidden;
+            background-color: transparent;
 
+            background-image: linear-gradient( 115deg, #001669, #007296 1%, #007296 11%, #015673 15%, 
+            #000 23.57%, transparent 23.57%, transparent 100% ),
+            
+            linear-gradient( 109deg, transparent, #2d8427 23.57%, #205a06 41%, #000 45%,
+            transparent 45%, transparent 100% ),
+            
+            linear-gradient( 109deg, transparent, #e79a07 45%, #e79a07 50%, #e79a07 52%, 
+            #444 55%, transparent 45%, transparent 100% ),
+            
+            linear-gradient( 109deg, transparent, #288ab1 55%, #288ab1 68%,  #000 73%, 
+            transparent 73%, transparent 100% ),
+            
+            linear-gradient( 109deg, transparent, #de491e 73%, #de491e 100% );
+
+            background-size: cover; /* Faz o gradiente cobrir toda a tela */
+            background-repeat: no-repeat; /* Evita a repetição do gradiente */
+            background-attachment: fixed;
         }
 
         #nameInput {
@@ -30,13 +48,14 @@
             justify-content: center;
             align-items: center;
             padding: 0;
+            overflow: hidden;
         }
 
         #nameInput input{
             width: auto;
             outline: none;
             padding: 10px;
-            font-size: 14pt;
+            font-size: 18pt;
             border-radius: 0.5em;
             margin-top: 8px;
         }
@@ -45,7 +64,7 @@
             width: auto;
             outline: none;
             padding: 10px;
-            font-size: 14pt;
+            font-size: 18pt;
             font-weight: bold;
             background-color: black;
             color: #f0f0f0;
@@ -53,26 +72,31 @@
             border-radius: 0.5em;
         }
 
-        .ideo-container {
+        .video-container {
             position: relative;
             width: 100%;
+            height: 100%;
             padding-bottom: 56.25%; /* Aspect ratio 16:9 (divide 9 by 16 = 0.5625) */
             height: 0;
-            overflow: hidden;
-            align-items: center;
         }
 
-        .ideo-container p{
-            font-size: 12pt;
+        .video-container p{
+            width: 70%;
+            margin: 20px auto;
+            font-size: 14pt;
+            font-weight: bold;
+            text-shadow: 1px 1px 15px #f0f0f0;
+
         }
 
-        .ideo-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-container iframe {
+            min-width: 240px;
+            min-height: 426px;
             width: 100%;
-            height: 100%;
-            border: 0;
+            height: auto;
+            max-height: 480px;
+            max-width: 854px;
+            margin-bottom: 24px;
         }
 
         .title-container{
@@ -82,6 +106,7 @@
         
         h1{
             margin: 10px auto;
+            text-shadow: 1px 1px 15px #f0f0f0;
         }
 
     </style>
@@ -135,6 +160,7 @@
         function showVideos() {
             document.getElementById('nameInput').style.display = 'none';
             shuffleArray(videos); // Embaralha a lista de vídeos
+            shuffleArray(texts); // Embaralha a lista de vídeos
             const videoList = document.getElementById('videoList');
             
             // Limita o loop ao menor valor entre 5 e o tamanho do array
